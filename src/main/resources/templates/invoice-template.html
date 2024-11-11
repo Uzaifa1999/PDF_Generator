@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            border: 1px solid #000;
+            padding: 10px;
+        }
+        .header, .footer {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .table th, .table td {
+          
+            padding: 8px;
+            text-align: center;
+        }
+        .table th {
+            background-color: #f0f0f0;
+        }
+        .tableborder{
+          border: 1px solid #000;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table class="table">
+            <tr>
+           		<td class="tableborder"><strong>Seller:</strong><br>
+                <span th:text="${seller}"></span><br>
+                <span th:text="${sellerAddress}"></span><br>
+                GSTIN: <span th:text="${sellerGstin}"></span></td>
+          
+                <td class="tableborder"><strong>Buyer:</strong><br>
+                <span th:text="${buyer}"></span><br>
+                <span th:text="${buyerAddress}"></span><br>
+                GSTIN: <span th:text="${buyerGstin}"></span></td>
+            </tr>
+        </table>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="tableborder">Item</th>
+                    <th class="tableborder">Quantity</th>
+                    <th class="tableborder">Rate</th>
+                    <th class="tableborder">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${items}">
+                    <td class="tableborder" th:text="${item.name}"></td>
+                    <td class="tableborder" th:text="${item.quantity}"></td>
+                    <td class="tableborder" th:text="${item.rate}"></td>
+                    <td class="tableborder" th:text="${item.amount}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
